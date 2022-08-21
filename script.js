@@ -1,0 +1,15 @@
+// define main container
+let container = document.getElementById("container");
+
+// create 16 divs with classes
+for (let i = 1; i < 17; i++) {
+    let gridDiv = document.createElement("div");
+    container.appendChild(gridDiv);
+    gridDiv.classList.add(`box${i}`);
+}
+
+// create array from 16 divs
+let containerDivs = container.children;
+let divArray = Array.from(containerDivs);
+console.log(divArray);
+
