@@ -1,3 +1,26 @@
 .test {
     font-size: 16px;
 }
+
+body div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#container {
+    margin-top: 50px;
+    width: 832px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+#container div {
+
+    border: 1px solid skyblue;
+    width: 50px;
+    height: 50px;
+
+}
