@@ -18,10 +18,8 @@ let counter = 0;
 
 function increaseCount () {
     if (counter < 9) {
-        console.log(counter);
         return counter++;
     } else {
-        console.log(counter);
         return counter = 0;
     }
 }
@@ -34,7 +32,6 @@ function addBG(){
     } else {
         element.style.backgroundColor = randColor();
         let brightLevel = 100-counter*10;
-        console.log(brightLevel);
         element.style.webkitFilter = `brightness(${brightLevel}%)`;
         increaseCount();
         return;
