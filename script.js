@@ -1,10 +1,28 @@
 // starting grid size
 let gridSize = 16;
 
+function randColor (){
+    let r = Math.floor(Math.random()*256);
+    let g = Math.floor(Math.random()*256);
+    let b = Math.floor(Math.random()*256);
+    return color = `rgb(${r}+${g}+${b})`;
+}
+
+function checkColor(element) {
+    if (element.style.backgroundColor){
+        return true;
+    }
+}
 
 //change color of a single div
 function addBG(){
-   this.classList.add('activeColor');
+    let element = this;
+    if (checkColor(element)){
+        return;   
+    } else {
+            element.style.backgroundColor = randColor(); 
+            console.log(randColor);
+        }
 }
 
 // define main container
@@ -17,7 +35,7 @@ function makeGame(){
     gridDiv.style.width = (500/gridSize-2)+"px";
     gridDiv.style.height = (500/gridSize-2)+"px";
     gameContainer.appendChild(gridDiv);
-    gridDiv.classList.add(`box${i}`, `game`);
+    gridDiv.classList.add(`box${i}`);
     gridDiv.addEventListener('mouseover', addBG);
     let containerDivs = gameContainer.children;
     let divArray = Array.from(containerDivs);
