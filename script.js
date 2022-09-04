@@ -1,36 +1,28 @@
 // starting grid size
-let gridSize = ((16*16)+1);
+let gridSize = 16;
 
-//change color of a div, function add class
+
+//change color of a single div
 function addBG(){
    this.classList.add('activeColor');
 }
 
-//function removeBG(){
-//    this.classList.remove('activeColor');
-// }
- 
-
 // define main container
-let container = document.getElementById("container");
+let gameContainer = document.getElementById("gameContainer");
 
-// create 16x16 divs with classes
-let init = function(){
-    if (document.querySelector('.etchbox')){
-        container.children.remove();
-    } 
-    for (let i = 1; i < gridSize; i++) {
-        let gridDiv = document.createElement("div");
-        container.appendChild(gridDiv);
-        gridDiv.classList.add(`box${i}`, 'etchbox');
-        gridDiv.addEventListener('mouseover', addBG);
-        //gridDiv.addEventListener('mouseout', removeBG);
-        }
+
+function makeGame(){
+    for (let i = 0; i < (gridSize*gridSize); i++) {
+    let gridDiv = document.createElement("div");
+    gridDiv.style.width = (832/gridSize-2)+"px";
+    gridDiv.style.height = (832/gridSize-2)+"px";
+    gameContainer.appendChild(gridDiv);
+    gridDiv.classList.add(`box${i}`, `game`);
+    gridDiv.addEventListener('mouseover', addBG);
+    let containerDivs = gameContainer.children;
+    let divArray = Array.from(containerDivs);
+    }
 }
-
-// create array from 16x16 divs
-let containerDivs = container.children;
-let divArray = Array.from(containerDivs);
 
 // add function to button
 let resetBtn = document.querySelector("#resetbtn");
@@ -38,7 +30,12 @@ resetBtn.onclick = function (){
     let userGrid = prompt("What size grid?",100);
     if (userGrid <= 100 && userGrid > 0){
         gridSize = userGrid;
-        init();
+        let lastChild = gameContainer.lastChild;
+        while (lastChild){
+            gameContainer.removeChild(lastChild);
+            lastChild = gameContainer.lastElementChild;
+        }
+        makeGame();
     } else {
         alert("Must be less than 100!");
     }
@@ -46,7 +43,7 @@ resetBtn.onclick = function (){
 }
 
 // start
-init();
+makeGame();
 
 
 
