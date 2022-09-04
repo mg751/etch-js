@@ -14,15 +14,31 @@ function checkColor(element) {
     }
 }
 
+let counter = 0;
+
+function increaseCount () {
+    if (counter < 9) {
+        console.log(counter);
+        return counter++;
+    } else {
+        console.log(counter);
+        return counter = 0;
+    }
+}
+
 //change color of a single div
 function addBG(){
     let element = this;
     if (checkColor(element)){
         return;   
     } else {
-            element.style.backgroundColor = randColor(); 
-            console.log(randColor);
-        }
+        element.style.backgroundColor = randColor();
+        let brightLevel = 100-counter*10;
+        console.log(brightLevel);
+        element.style.webkitFilter = `brightness(${brightLevel}%)`;
+        increaseCount();
+        return;
+}
 }
 
 // define main container
@@ -62,9 +78,6 @@ resetBtn.onclick = function (){
 
 // start
 makeGame();
-
-
-
 
 
 
