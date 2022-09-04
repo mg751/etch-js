@@ -14,8 +14,8 @@ let gameContainer = document.getElementById("gameContainer");
 function makeGame(){
     for (let i = 0; i < (gridSize*gridSize); i++) {
     let gridDiv = document.createElement("div");
-    gridDiv.style.width = (832/gridSize-2)+"px";
-    gridDiv.style.height = (832/gridSize-2)+"px";
+    gridDiv.style.width = (500/gridSize-2)+"px";
+    gridDiv.style.height = (500/gridSize-2)+"px";
     gameContainer.appendChild(gridDiv);
     gridDiv.classList.add(`box${i}`, `game`);
     gridDiv.addEventListener('mouseover', addBG);
